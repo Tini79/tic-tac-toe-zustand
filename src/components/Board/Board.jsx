@@ -1,30 +1,7 @@
 import Square from "./Square"
-import { create } from 'zustand'
-import { combine } from 'zustand/middleware'
 import "@assets/board.css"
 import { calculateStatus, calculateTurns, calculateWinner } from "@utils/helper"
-
-// creating state using zustand
-const useGameStore = create(
-  combine({ squares: Array(9).fill(null), xIsNext: true }, (set) => {
-    return {
-      setSquares: (nextSquares) => {
-        set(state => ({
-          squares: typeof nextSquares === "function"
-            ? nextSquares(state.squares)
-            : nextSquares
-        }))
-      },
-      setXIsNext: (nextXIsNext) => {
-        set(state => ({
-          xIsNext: typeof nextXIsNext === "function"
-            ? nextXIsNext(state.xIsNext)
-            : nextXIsNext
-        }))
-      }
-    }
-  })
-)
+import useGameStore from "@utils/store"
 
 const Board = () => {
   const squares = useGameStore(({ squares }) => squares)

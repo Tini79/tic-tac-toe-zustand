@@ -19,10 +19,7 @@ const Board = () => {
 
     nextSquares[idx] = player
     setSquares(nextSquares)
-    console.log(xIsNext, '1');
-
     setXIsNext(!xIsNext)
-    console.log(xIsNext, '2');
   }
 
   return (
